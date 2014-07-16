@@ -1,19 +1,29 @@
 angular.module('starter.controllers')
-.controller('ExchangeDetailCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-  $scope.exchange = 
-  	{"title":"Is there any coffee?", "id":1};
+.controller('ExchangeDetailCtrl', function($scope, $stateParams, $firebase, $firebaseSimpleLogin) {
+  var eid = $stateParams.exchangeId;
+  
+  var ref = new Firebase("https://omates.firebaseio.com/");
+  $scope.auth = $firebaseSimpleLogin(ref);
+  $scope.auth.$getCurrentUser().then(function(user){
+    if(user===null){
+      return;
+    }
+    var uid = user.id;
+    var userRef = new Firebase("https://omates.firebaseio.com/users/"+uid);
+    $scope.user = $firebase(userRef);
+  });
 
-  $scope.exchange_messages = [
-  	{"response":"I'm not sure, let me check.", "associated_exchange_id":1, "friend_id":2},
-  	{"response":"Yes!", "associated_exchange_id":1, "friend_id":2},
-  ];
+  var exchangeRef = new Firebase("https://omates.firebaseio.com/exchanges/"+eid);
+  $scope.exchange = $firebase(exchangeRef);
+  var ref = new Firebase("https://omates.firebaseio.com/exchanges/"+eid+"/messages");
+  $scope.exchange_messages = $firebase(ref);
 
   $scope.newResponse = function(reply) {
-  	$scope.exchange_messages.push({
+    $scope.exchange_messages.$add({
   		response: reply.response,
-  		associated_exchange_id: 1,
-  		friend_id: 3
+  		uid: $scope.user.id,
+      name: $scope.user.name,
+      email: $scope.user.email
   	});
   	reply.response = "";
   };

@@ -1,6 +1,6 @@
 <ion-view title="Omaters">
   <ion-content class="has-header">
-  	<h1>Omaters</h1>
+    <!-- <h1>Omaters</h1> -->
     <ion-list>
       <ion-item ng-repeat="(fid,friend) in friends" type="item-text-wrap" href="#/tab/omaters/{{getThreadId(user.id,fid)}}" ng-if="user.id!=fid && friend.connections">
         <h2>{{friend.name}}</h2>

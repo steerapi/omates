@@ -29,7 +29,9 @@ angular.module('starter.controllers')
   $scope.newMessage = function(message) {
   	$scope.messages.$add({
   		response: message.response,
-  		uid:$scope.user.id
+  		uid:$scope.user.id,
+      name: $scope.user.name,
+      email: $scope.user.email
   	});
   	message.response = "";
   };

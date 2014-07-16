@@ -10,7 +10,7 @@
 
   	<ion-item ng-repeat="message in exchange_messages" type="item-text-wrap">
   		<h2>{{message.response}}</h2>
-  		From Friend {{message.friend_id}}
+  		From {{message.name}}
   	</ion-item>
 
     <form ng-submit="newResponse(reply)">

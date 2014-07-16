@@ -1,18 +1,32 @@
 angular.module('starter.controllers')
 
-.controller('ExchangeCtrl', function($scope, $stateParams, Friends) {
-  $scope.friend = Friends.get($stateParams.friendId);
-
-  $scope.exchanges = [
-  	{"title":"Is there any coffee?", "id":1},
-  	{"title":"Is room 102 reserved now?", "id":2},
-  ];
+.controller('ExchangeCtrl', function($scope, $stateParams, $firebase, $firebaseSimpleLogin) {
+  $scope.auth = $firebaseSimpleLogin(ref);
+  $scope.auth.$getCurrentUser().then(function(user){
+    if(user===null){
+      return;
+    }
+    var uid = user.id;
+    var userRef = new Firebase("https://omates.firebaseio.com/users/"+uid);
+    $scope.user = $firebase(userRef);
+  });
+  
+  var ref = new Firebase("https://omates.firebaseio.com/exchanges");
+  $scope.exchanges = $firebase(ref);
 
   $scope.newExchange = function(exchange) {
-  	$scope.exchanges.push({
+  	var obj = {
   		title: exchange.title,
-  		id: 3
-  	});
+  		uid: $scope.user.id,
+      name: $scope.user.name,
+      email: $scope.user.email
+  	};
+    $scope.exchanges.$add(obj).then(function(ref) {
+      var updateObj = {};
+      obj.id = ref.name();
+      updateObj[ref.name()] = obj;
+      $scope.exchanges.$update(obj)
+    });
   	exchange.title = "";
   };
 

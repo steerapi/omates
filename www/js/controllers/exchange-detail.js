@@ -23,7 +23,9 @@ angular.module('starter.controllers')
   		response: reply.response,
   		uid: $scope.user.id,
       name: $scope.user.name,
-      email: $scope.user.email
+      email: $scope.user.email,
+      project: $scope.user.project,
+      school: $scope.user.school
   	});
   	reply.response = "";
   };

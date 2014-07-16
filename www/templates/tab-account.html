@@ -6,13 +6,10 @@
     Project: {{account_info.project}} <br />
     Email: {{account_info.email}} <br />
     School: {{account_info.school}} <br />
-    Password: ********** <br />
 
     <button class="button button-icon" ng-click="openChangeAccount()">
         <i class="icon ion-compose"></i> Change Account Info
     </button>
-
-
 
     <script id="changeaccountinfo.html" type="text/ng-template">
 
@@ -41,9 +38,6 @@
               <label class="item item-input">
                 <input type="text" placeholder="School" ng-model="newinfo.school">
               </label>
-              <label class="item item-input">
-                <input type="text" placeholder="Password" ng-model="newinfo.password">
-              </label>	
             </div>
             <div class="padding">
               <button type="submit" class="button button-block button-positive">Update Account</button>
@@ -55,7 +49,6 @@
       </div>
 
     </script>
-
 
   </ion-content>
 </ion-view>

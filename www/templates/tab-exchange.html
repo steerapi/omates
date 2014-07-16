@@ -4,6 +4,8 @@
     <ion-list>
     	<ion-item ng-repeat="exchange in exchanges" type="item-text-wrap" href="#/tab/exchange/{{exchange.id}}">
     		<h2>{{exchange.title}}</h2>
+        <span>By {{exchange.name}} ({{exchange.project}})</span>
+        
     	</ion-item>
 	</ion-list>
 

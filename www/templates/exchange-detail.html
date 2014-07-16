@@ -4,13 +4,13 @@
   The ExchangeCtrl pulls data from the Exchanges service (service.js)
   The Exchanges service returns an array of exchange data
 -->
-<ion-view title="Exchange Detail">
+<ion-view title="{{exchange.title}}">
   <ion-content has-header="true" padding="true">
-  	<h1>{{exchange.title}}</h1>
+    <!-- <h1>{{exchange.title}}</h1> -->
 
   	<ion-item ng-repeat="message in exchange_messages" type="item-text-wrap">
   		<h2>{{message.response}}</h2>
-  		From {{message.name}}
+  		From {{message.name}} ({{message.project}})
   	</ion-item>
 
 

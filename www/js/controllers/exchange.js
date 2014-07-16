@@ -1,6 +1,8 @@
 angular.module('starter.controllers')
 
 .controller('ExchangeCtrl', function($scope, $stateParams, $firebase, $firebaseSimpleLogin) {
+  
+  var ref = new Firebase("https://omates.firebaseio.com/");
   $scope.auth = $firebaseSimpleLogin(ref);
   $scope.auth.$getCurrentUser().then(function(user){
     if(user===null){
@@ -19,13 +21,15 @@ angular.module('starter.controllers')
   		title: exchange.title,
   		uid: $scope.user.id,
       name: $scope.user.name,
-      email: $scope.user.email
+      email: $scope.user.email,
+      project: $scope.user.project,
+      school: $scope.user.school
   	};
     $scope.exchanges.$add(obj).then(function(ref) {
       var updateObj = {};
       obj.id = ref.name();
       updateObj[ref.name()] = obj;
-      $scope.exchanges.$update(obj)
+      $scope.exchanges.$update(updateObj)
     });
   	exchange.title = "";
   };

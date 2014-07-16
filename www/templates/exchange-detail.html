@@ -1,5 +1,5 @@
-<!--
-  This template loads for the 'tab.exchange-detail' state (app.js)
+
+<!--  This template loads for the 'tab.exchange-detail' state (app.js)
   'exchange' is a $scope variable created in the ExchangeCtrl controller (controllers.js)
   The ExchangeCtrl pulls data from the Exchanges service (service.js)
   The Exchanges service returns an array of exchange data
@@ -13,16 +13,23 @@
   		From {{message.name}}
   	</ion-item>
 
-    <form ng-submit="newResponse(reply)">
-      <div class="list">
-        <label class="item item-input">
-          <input type="text" placeholder="Write response here" ng-model="reply.response">
-        </label>
-      </div>
-      <div class="padding">
-        <button type="submit" class="button button-block button-positive">Post Reply</button>
-      </div>
-    </form>
 
   </ion-content>
+
 </ion-view>
+
+<ion-footer-bar align-title="right" class="bar-assertive" style="height:10%;">
+  <form ng-submit="newResponse(reply)" style="width:100%;padding:4px 20px 0px 20px;">
+    <div class="list" >
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Write your response here" ng-model="reply.response">
+      </label>
+      <button type="submit" class="button button-small">
+        Respond
+      </button>
+    </div>
+    </div>
+  </form> 
+</ion-footer-bar>
+

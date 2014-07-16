@@ -1,9 +1,14 @@
 <ion-view title="Omaters">
   <ion-content class="has-header">
+  	<h1>Omaters</h1>
     <ion-list>
-      <ion-item ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/friend/{{friend.id}}">
-        {{friend.name}}
+      <ion-item ng-repeat="friend in friends" type="item-text-wrap" href="#/tab/omaters/{{friend.id}}">
+        <h2>{{friend.name}}</h2>
+        Project: {{friend.project}} <br />
+        School: {{friend.school}}
       </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>
+
+

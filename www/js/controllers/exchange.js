@@ -8,4 +8,12 @@ angular.module('starter.controllers')
   	{"title":"Is room 102 reserved now?", "id":2},
   ];
 
+  $scope.newExchange = function(exchange) {
+  	$scope.exchanges.push({
+  		title: exchange.title,
+  		id: 3
+  	});
+  	exchange.title = "";
+  };
+
 })

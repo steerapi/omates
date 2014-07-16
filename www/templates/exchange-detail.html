@@ -13,5 +13,16 @@
   		From Friend {{message.friend_id}}
   	</ion-item>
 
+    <form ng-submit="newResponse(reply)">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" placeholder="Write response here" ng-model="reply.response">
+        </label>
+      </div>
+      <div class="padding">
+        <button type="submit" class="button button-block button-positive">Post Reply</button>
+      </div>
+    </form>
+
   </ion-content>
 </ion-view>

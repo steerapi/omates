@@ -11,18 +11,23 @@
       From Friend {{message.friend_id}}
 
   	</ion-item>
-    <br /><br />
-
-    <form ng-submit="newMessage(message)">
-      <div class="list">
-        <label class="item item-input">
-          <input type="text" placeholder="Write message here" ng-model="message.response">
-        </label>
-      </div>
-      <div class="padding">
-        <button type="submit" class="button button-block button-positive">Send Message</button>
-      </div>
-    </form>
   	
   </ion-content>
 </ion-view>
+
+<ion-footer-bar align-title="right" class="bar-assertive" style="height:10%;">
+  <form ng-submit="newMessage(message)" style="width:100%;padding:4px 20px 0px 20px;">
+    <div class="list" >
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <input type="text" placeholder="Write your message here" ng-model="message.response">
+      </label>
+      <button type="submit" class="button button-small">
+        Respond
+      </button>
+    </div>
+    </div>
+  </form> 
+</ion-footer-bar>
+
+

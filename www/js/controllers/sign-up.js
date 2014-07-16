@@ -15,7 +15,7 @@ angular.module('starter.controllers')
       name: user.name, 
       school: user.school, 
       email: user.email, 
-      project: user.project
+      team: user.team
     };
     $scope.users.$update(obj);
   }
@@ -23,19 +23,18 @@ angular.module('starter.controllers')
   $scope.signUp = function(userObj) {
     
     $scope.auth.$createUser(userObj.email, userObj.password).then(function(user) {
+       $scope.addPerson(user.id, userObj);
 
        $scope.auth.$login('password', {
          email: userObj.email,
          password: userObj.password,
          rememberMe: true
        }).then(function(user) {
-          console.log('Logged in as: ', user.uid);
+         $state.go('tab.omaters');
        }, function(error) {
           console.error('Login failed: ', error);
        });
        
-       $scope.addPerson(user.id, userObj);
-       $state.go('tab.omaters');
     }, function(error) {
        console.error('Login failed: ', error);
     });

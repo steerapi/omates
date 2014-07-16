@@ -2,29 +2,27 @@
   <ion-content class="has-header">
     <!-- <h1>Exchange</h1> -->
     <ion-list>
-    	<ion-item ng-repeat="exchange in exchanges" type="item-text-wrap" href="#/tab/exchange/{{exchange.id}}">
-    		<h2>{{exchange.title}}</h2>
-        <span>By {{exchange.name}} ({{exchange.project}})</span>
-        
+    	<ion-item ng-repeat="exchange in exchanges | orderByPriority" type="item-text-wrap" href="#/tab/exchange/{{exchange.id}}">
+    		<h2 ng-bind-html="exchange.content"></h2>
+        <span>By {{exchange.name}} (From {{exchange.team}})</span>
     	</ion-item>
-	</ion-list>
-
+	  </ion-list>
   </ion-content>
+  <ion-footer-bar align-title="right" class="bar-assertive">
+
+    <form ng-submit="newExchange(exchange)" class="bar bar-footer bar-assertive item-input-inset">
+      <label class="item-input-wrapper">
+        <!-- <i class="icon ion-ios7-search placeholder-icon"></i> -->
+        <input type="text" placeholder="Question" ng-model="exchange.content">
+      </label>
+      <button class="button button-clear">
+        <!-- <i class="icon ion-ios7-paperplane"></i> -->
+        Ask
+      </button>
+    </form>
+  </ion-footer-bar>
+  
 </ion-view>
 
 
-<ion-footer-bar align-title="right" class="bar-assertive" style="padding-bottom:46px;">
-  <form ng-submit="newExchange(exchange)" style="width:100%;padding:0px 20px 0px 20px;">
-    <div class="list" >
-    <div class="item item-input-inset" style="height:40px;">
-      <label class="item-input-wrapper">
-        <input type="text" placeholder="Write your question here" ng-model="exchange.title">
-      </label>
-      <button type="submit" class="button button-small">
-        Post Question
-      </button>
-    </div>
-    </div>
-  </form> 
-</ion-footer-bar>
 

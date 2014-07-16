@@ -4,32 +4,18 @@
   The ExchangeCtrl pulls data from the Exchanges service (service.js)
   The Exchanges service returns an array of exchange data
 -->
-<ion-view title="{{exchange.title}}">
+<ion-view title="{{exchange.content}}">
   <ion-content has-header="true" padding="true">
     <!-- <h1>{{exchange.title}}</h1> -->
 
   	<ion-item ng-repeat="message in exchange_messages" type="item-text-wrap">
-  		<h2>{{message.response}}</h2>
-  		From {{message.name}} ({{message.project}})
+  		<div class="messages" ng-bind-html="exchange.content"></div>
+  		From {{message.name}} ({{message.team}})
   	</ion-item>
-
-
   </ion-content>
 
+  <ion-footer-bar align-title="right">
+    <div ng-include class="item-input-wrapper" src='"templates/message-bar.html"'></div>
+  </ion-footer-bar>
+  
 </ion-view>
-
-<ion-footer-bar align-title="right" class="bar-assertive" style="padding-bottom:46px;">
-  <form ng-submit="newResponse(reply)" style="width:100%;padding:0px 20px 0px 20px;">
-    <div class="list" >
-    <div class="item item-input-inset" style="height:40px;">
-      <label class="item-input-wrapper">
-        <input type="text" placeholder="Write your response here" ng-model="reply.response">
-      </label>
-      <button type="submit" class="button button-small">
-        Respond
-      </button>
-    </div>
-    </div>
-  </form> 
-</ion-footer-bar>
-

@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('OmaterDetailCtrl', function($scope, $stateParams, $firebase, $firebaseSimpleLogin) {
+.controller('OmaterDetailCtrl', function($scope, $state, $stateParams, $firebase, $firebaseSimpleLogin, $omatesMessageAppender) {
   var id = $stateParams.detailId;
   var ids = id.split("-");
   
@@ -7,36 +7,46 @@ angular.module('starter.controllers')
   $scope.auth = $firebaseSimpleLogin(ref);
   $scope.auth.$getCurrentUser().then(function(user){
     if(user===null){
+      $state.go('signin');
       return;
     }
     var uid = user.id;
     var userRef = new Firebase("https://omates.firebaseio.com/users/"+uid);
-    fid = ids.filter(function(id){ return id!==uid})[0];
+    var fid = ids.filter(function(id){ return id!==uid})[0];
     var friendRef = new Firebase("https://omates.firebaseio.com/users/"+fid);
     $scope.user = $firebase(userRef);
     $scope.friend = $firebase(friendRef);
+    var msgRef = new Firebase("https://omates.firebaseio.com/messages/"+id);
+    
+    var funread = friendRef.child("unread-by-"+uid);
+    funread.remove();
+    var funreadOnValue = function(){
+      funread.remove();
+    };
+    funread.on('value',funreadOnValue);
+    
+    $scope.messages = $firebase(msgRef.limit(50));
+    var numMsgs = 0;
+    
+    var unread = userRef.child("unread-by-"+fid);
+    var unreadOnValue = function(snap) {
+      if(snap.val()==null){
+        numMsgs = 0;
+      }else{
+        numMsgs = +snap.val();
+      }
+    };
+    unread.on('value', unreadOnValue);
+    
+    $scope.$on('$destroy', function cleanup() {
+      funread.off('value',funreadOnValue);
+      funread.off('value',unreadOnValue);
+    });
+    
+    $scope.newMessage = $omatesMessageAppender.register($scope.messages, $scope.user, function(obj,ref){
+      numMsgs++;
+      unread.set(numMsgs);
+    });
   });
-  
-  var ref = new Firebase("https://omates.firebaseio.com/messages/"+id);
-  $scope.messages = $firebase(ref);
-  
-  // $scope.friend = {"name":"Kramer", "project":"Dropbox", "school":"HBS", "id":2};
-  // $scope.messages = [
-  //   {"response":"Hi, how are you?", "uid":2},
-  //   {"response":"Good thanks, how are you?", "uid":3},
-  // ];
-
-  $scope.newMessage = function(message) {
-  	$scope.messages.$add({
-  		response: message.response,
-  		uid:$scope.user.id,
-      name: $scope.user.name,
-      email: $scope.user.email,
-      project: $scope.user.project,
-      school: $scope.user.school
-  	});
-  	message.response = "";
-  };
-
 
 })

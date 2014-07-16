@@ -6,7 +6,6 @@ angular.module('starter.controllers')
   var checkLogin = function(){
     auth.$getCurrentUser().then(function(user){
       if(user===null){
-        console.log("not in");
         setTimeout(checkLogin,1000);
         return;
       }
@@ -17,7 +16,7 @@ angular.module('starter.controllers')
         id: user.id,
         name: user.name,
         email: user.email,
-        project: user.project,
+        team: user.team,
         school: user.school
       });
             

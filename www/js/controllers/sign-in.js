@@ -4,7 +4,7 @@ angular.module('starter.controllers')
   var ref = new Firebase("https://omates.firebaseio.com/");
   $scope.auth = $firebaseSimpleLogin(ref);
   $scope.auth.$getCurrentUser().then(function(user){
-    console.log(user);
+    $state.go('tab.omaters');
   }, function(error) {
      console.error('Login failed: ', error);
   });
@@ -16,12 +16,11 @@ angular.module('starter.controllers')
       password: user.password,
       rememberMe: true
     }).then(function(user) {
-       console.log('Logged in as: ', user.uid);
+       $state.go('tab.omaters');
     }, function(error) {
        console.error('Login failed: ', error);
     });
     
-    $state.go('tab.omaters');
   };
   
 });

@@ -6,7 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['firebase'])
 angular.module('starter.services', [])
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
@@ -31,7 +31,28 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
+  
+    .state('signin', {
+      url: "/sign-in",
+      templateUrl: "templates/sign-in.html",
+      controller: 'SignInCtrl'
+    })
+    .state('signup', {
+      url: "/sign-up",
+      templateUrl: "templates/sign-up.html",
+      controller: 'SignUpCtrl'
+    })
+    .state('changepassword', {
+      url: "/change-password",
+      templateUrl: "templates/change-password.html",
+      controller: 'ChangePasswordCtrl'
+    })
+    .state('forgotpassword', {
+      url: "/forgot-password",
+      templateUrl: "templates/forgot-password.html",
+      controller: 'ForgotPasswordCtrl'
+    })
+    
     // setup an abstract state for the tabs directive
     .state('tab', {
       url: "/tab",
@@ -87,9 +108,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-
+    
+  $urlRouterProvider.otherwise("/sign-in");
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/omaters');
+  // $urlRouterProvider.otherwise('/tab/omaters');
 
 });
 

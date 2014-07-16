@@ -4,7 +4,19 @@ angular.module('starter.controllers')
   var ref = new Firebase("https://omates.firebaseio.com/");
   $scope.auth = $firebaseSimpleLogin(ref);
   $scope.auth.$getCurrentUser().then(function(user){
+    if(user===null){
+      return;
+    }
     var id = user.id;
+    var userRef = new Firebase("https://omates.firebaseio.com/users/"+id);
+    $scope.user = $firebase(userRef);
+    $scope.user.$update({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      project: user.project,
+      school: user.school
+    });
     // since I can connect from multiple devices or browser tabs, we store each connection instance separately
     // any time that connectionsRef's value is null (i.e. has no children) I am offline
     var myConnectionsRef = new Firebase('https://omates.firebaseio.com/users/'+id+'/connections');
@@ -34,5 +46,15 @@ angular.module('starter.controllers')
   
   var usersRef = new Firebase("https://omates.firebaseio.com/users");
   // Automatically syncs everywhere in realtime
-  $scope.users = $firebase(usersRef);
+  $scope.friends = $firebase(usersRef);
+  $scope.getThreadId = function(uid,fid){
+    ids = [+uid,+fid]
+    return ids.sort().reverse().join("-")
+  }
 })
+
+
+
+
+
+

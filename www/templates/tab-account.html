@@ -1,5 +1,61 @@
 <ion-view title="Account">
   <ion-content class="has-header padding">
-    <h1>Account</h1>
+    <h1>My Account</h1>
+
+    Name: {{account_info.name}} <br />
+    Project: {{account_info.project}} <br />
+    Email: {{account_info.email}} <br />
+    School: {{account_info.school}} <br />
+    Password: ********** <br />
+
+    <button class="button button-icon" ng-click="openChangeAccount()">
+        <i class="icon ion-compose"></i> Change Account Info
+    </button>
+
+
+
+    <script id="changeaccountinfo.html" type="text/ng-template">
+
+      <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+          <h1 class="title">Change Account Information</h1>
+          <button class="button button-clear button-positive" ng-click="closeChangeAccount()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+          <form ng-submit="changeAccountInfo(newinfo)">
+            <div class="list">
+              <label class="item item-input">
+                <input type="text" placeholder="Name" ng-model="newinfo.name">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Project" ng-model="newinfo.project">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Email" ng-model="newinfo.email">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="School" ng-model="newinfo.school">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Password" ng-model="newinfo.password">
+              </label>	
+            </div>
+            <div class="padding">
+              <button type="submit" class="button button-block button-positive">Update Account</button>
+            </div>
+          </form>
+
+        </ion-content>
+
+      </div>
+
+    </script>
+
+
   </ion-content>
 </ion-view>

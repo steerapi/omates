@@ -10,7 +10,8 @@ angular.module('starter.controllers')
   $scope.addPerson = function(id,user) {
     // AngularFire $add method
     var obj = {};
-    obj[user.id] = {
+    obj[id] = {
+      id: id,
       name: user.name, 
       school: user.school, 
       email: user.email, 
@@ -22,7 +23,17 @@ angular.module('starter.controllers')
   $scope.signUp = function(userObj) {
     
     $scope.auth.$createUser(userObj.email, userObj.password).then(function(user) {
-       console.log('Logged in as: ', user.uid);
+
+       $scope.auth.$login('password', {
+         email: userObj.email,
+         password: userObj.password,
+         rememberMe: true
+       }).then(function(user) {
+          console.log('Logged in as: ', user.uid);
+       }, function(error) {
+          console.error('Login failed: ', error);
+       });
+       
        $scope.addPerson(user.id, userObj);
        $state.go('tab.omaters');
     }, function(error) {

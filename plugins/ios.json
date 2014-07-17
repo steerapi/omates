@@ -19,10 +19,6 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"LocationManager\"><param name=\"ios-package\" value=\"CDVLocationManager\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -37,9 +33,6 @@
             "PACKAGE_NAME": "com.ionicframework.omates472645"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.ionicframework.omates472645"
-        },
-        "org.apache.cordova.ibeacon": {
             "PACKAGE_NAME": "com.ionicframework.omates472645"
         }
     },

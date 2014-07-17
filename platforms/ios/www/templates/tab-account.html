@@ -1,5 +1,80 @@
 <ion-view title="Account">
-  <ion-content class="has-header padding">
-    <h1>Account</h1>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="editSave()">
+      <span class="padding" ng-if="!editMode">Edit</span>
+      <span class="padding" ng-if="editMode">Save</span>
+    </button>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <!-- <h1>My Account</h1> -->
+
+    <div class="list">
+
+      <div class="item item-icon-left">
+        <i class="icon ion-person"></i>
+        <span ng-if="!editMode">{{account_info.name || 'N/A'}}</span>
+        <input ng-if="editMode" type="text" placeholder="Name" ng-model="account_info.name" class="edit">
+      </div>
+
+      <div class="item item-icon-left">
+        <i class="icon ion-person-stalker"></i>
+        <span ng-if="!editMode">{{account_info.team || 'N/A'}}</span>
+        <input ng-if="editMode" type="text" placeholder="Team" ng-model="account_info.team" class="edit">
+      </div>
+      
+      <div class="item item-icon-left">
+        <i class="icon ion-ios7-email"></i>
+        <span ng-if="!editMode">{{account_info.email || 'N/A'}}</span>
+        <input ng-if="editMode" type="text" placeholder="Email" ng-model="account_info.email" class="edit">
+      </div>
+      
+      <div class="item item-icon-left">
+        <i class="icon ion-university"></i>
+        <span ng-if="!editMode">{{account_info.school || 'N/A'}}</span>
+        <input ng-if="editMode" type="text" placeholder="School" ng-model="account_info.school" class="edit">
+      </div>
+    </div>
+
+    <!-- <button class="button button-icon" ng-click="openChangeAccount()">
+        <i class="icon ion-compose"></i> Change Account Info
+    </button>
+
+    <script id="changeaccountinfo.html" type="text/ng-template">
+
+      <div class="modal">
+
+        <ion-header-bar class="bar-secondary">
+          <h1 class="title">Change Account Information</h1>
+          <button class="button button-clear button-positive" ng-click="closeChangeAccount()">Cancel</button>
+        </ion-header-bar>
+
+        <ion-content>
+
+          <form ng-submit="changeAccountInfo(account_info)">
+            <div class="list">
+              <label class="item item-input">
+                <input type="text" placeholder="Name" ng-model="account_info.name">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Team" ng-model="account_info.team">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Email" ng-model="account_info.email">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="School" ng-model="account_info.school">
+              </label>
+            </div>
+            <div class="padding">
+              <button type="submit" class="button button-block button-positive">Update Account</button>
+            </div>
+          </form>
+
+        </ion-content>
+
+      </div>
+
+    </script> -->
+
   </ion-content>
 </ion-view>

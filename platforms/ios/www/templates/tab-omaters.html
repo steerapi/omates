@@ -1,0 +1,12 @@
+<ion-view title="Omaters">
+  <ion-content class="has-header">
+    <!-- <h1>Omaters</h1> -->
+    <ion-list>
+      <ion-item ng-repeat="(fid,friend) in friends" type="item-text-wrap" href="#/tab/omaters/{{getThreadId(user.id,fid)}}" ng-if="user.id!=fid && friend.connections">
+        <h2>{{friend.name}}</h2>
+        <p><i class="icon ion-person-stalker"></i> {{friend.team || 'N/A'}} <i class="icon ion-university"></i> {{friend.school || 'N/A'}}</p>
+        <span class="badge badge-assertive" ng-show="(friend['unread-by-'+user.id] || 0)>0">{{friend['unread-by-'+user.id] || 0}}</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

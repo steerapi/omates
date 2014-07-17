@@ -1,26 +1,35 @@
-angular.module('starter.services', [])
+angular.module('starter.services')
 
-/**
- * A simple example service that returns some data.
- */
-.factory('Friends', function() {
-  // Might use a resource here that returns a JSON array
-
-  // Some fake testing data
-  var friends = [
-    { id: 0, name: 'Scruff McGruff' },
-    { id: 1, name: 'G.I. Joe' },
-    { id: 2, name: 'Miss Frizzle' },
-    { id: 3, name: 'Ash Ketchum' }
-  ];
-
+.factory('$omatesMessageAppender', function($ionicScrollDelegate) {
   return {
-    all: function() {
-      return friends;
-    },
-    get: function(friendId) {
-      // Simple index lookup
-      return friends[friendId];
+    register: function(messages,sender,appendCb) {
+      messages.$on("loaded", function() {
+        $ionicScrollDelegate.scrollBottom();
+      });
+      messages.$on("change", function() {
+        $ionicScrollDelegate.scrollBottom();
+      });
+      return function(message){
+        if(!message || !message.content){
+          return;
+        }
+        var obj = {
+      		content: '<p>'+message.content+'</p>',
+      		uid: sender.id,
+          name: sender.name,
+          email: sender.email,
+          team: sender.team,
+          school: sender.school,
+          time: new Date().getTime()
+      	};
+      	messages.$add(obj).then(function(ref){
+          if(appendCb){
+        	  appendCb(obj,ref);
+          }
+      	});
+        $ionicScrollDelegate.scrollBottom();
+      	message.content = "";
+      }
     }
   }
 });

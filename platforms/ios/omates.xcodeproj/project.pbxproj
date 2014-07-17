@@ -42,9 +42,6 @@
 		A015824378A7461583DCC0D0 /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 70AF325AEE85403AA11A2FB2 /* UIWebViewExtension.m */; };
 		D16E58EF801B40A7880A6B46 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F9A5DE6553A4807B9096459 /* CDVLogger.m */; };
 		27691C97A1F74E56AAD20C26 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C86E49A6CA40CCA5D44681 /* CDVDevice.m */; };
-		48D7A75D604147749B1A1842 /* CDVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 334DB58F4CA64562B476D181 /* CDVLocationManager.m */; };
-		B543D68F42504AA4B6B84262 /* AppDelegate+CDVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C936E355B4186A3D4799C /* AppDelegate+CDVLocationManager.m */; };
-		F0ADD130D6004A43AADFF2AA /* LMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FC850A58D294A589B4BBE9C /* LMLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,12 +114,6 @@
 		D5CCF97C11B94712ACF209F7 /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "org.apache.cordova.console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		35C86E49A6CA40CCA5D44681 /* CDVDevice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVDevice.m"; path = "org.apache.cordova.device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		27A06A8FCC7C4C6B8E084CE7 /* CDVDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVDevice.h"; path = "org.apache.cordova.device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		334DB58F4CA64562B476D181 /* CDVLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLocationManager.m"; path = "org.apache.cordova.ibeacon/CDVLocationManager.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		1F9C936E355B4186A3D4799C /* AppDelegate+CDVLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+CDVLocationManager.m"; path = "org.apache.cordova.ibeacon/AppDelegate+CDVLocationManager.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		6FC850A58D294A589B4BBE9C /* LMLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "LMLogger.m"; path = "org.apache.cordova.ibeacon/LMLogger.m"; sourceTree = "<group>"; fileEncoding = 4; };
-		912C128E5D974B73A5C5ADEC /* CDVLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLocationManager.h"; path = "org.apache.cordova.ibeacon/CDVLocationManager.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		521981B7C8D740D99214F712 /* AppDelegate+CDVLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+CDVLocationManager.h"; path = "org.apache.cordova.ibeacon/AppDelegate+CDVLocationManager.h"; sourceTree = "<group>"; fileEncoding = 4; };
-		D92921E6570F418181BCFF81 /* LMLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LMLogger.h"; path = "org.apache.cordova.ibeacon/LMLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,12 +242,6 @@
 				D5CCF97C11B94712ACF209F7 /* CDVLogger.h */,
 				35C86E49A6CA40CCA5D44681 /* CDVDevice.m */,
 				27A06A8FCC7C4C6B8E084CE7 /* CDVDevice.h */,
-				334DB58F4CA64562B476D181 /* CDVLocationManager.m */,
-				1F9C936E355B4186A3D4799C /* AppDelegate+CDVLocationManager.m */,
-				6FC850A58D294A589B4BBE9C /* LMLogger.m */,
-				912C128E5D974B73A5C5ADEC /* CDVLocationManager.h */,
-				521981B7C8D740D99214F712 /* AppDelegate+CDVLocationManager.h */,
-				D92921E6570F418181BCFF81 /* LMLogger.h */,
 			);
 			name = Plugins;
 			path = "omates/Plugins";
@@ -455,9 +440,6 @@
 				A015824378A7461583DCC0D0 /* UIWebViewExtension.m in Sources */,
 				D16E58EF801B40A7880A6B46 /* CDVLogger.m in Sources */,
 				27691C97A1F74E56AAD20C26 /* CDVDevice.m in Sources */,
-				48D7A75D604147749B1A1842 /* CDVLocationManager.m in Sources */,
-				B543D68F42504AA4B6B84262 /* AppDelegate+CDVLocationManager.m in Sources */,
-				F0ADD130D6004A43AADFF2AA /* LMLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

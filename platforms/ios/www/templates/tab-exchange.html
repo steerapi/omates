@@ -1,0 +1,28 @@
+<ion-view title="Exchange">
+  <ion-content class="has-header">
+    <!-- <h1>Exchange</h1> -->
+    <ion-list>
+    	<ion-item ng-repeat="exchange in exchanges | orderByPriority" type="item-text-wrap" href="#/tab/exchange/{{exchange.id}}">
+    		<h2 ng-bind-html="exchange.content"></h2>
+        <span>By {{exchange.name}} (From {{exchange.team}})</span>
+    	</ion-item>
+	  </ion-list>
+  </ion-content>
+  <ion-footer-bar align-title="right" class="bar-assertive">
+
+    <form ng-submit="newExchange(exchange)" class="bar bar-footer bar-assertive item-input-inset">
+      <label class="item-input-wrapper">
+        <!-- <i class="icon ion-ios7-search placeholder-icon"></i> -->
+        <input type="text" placeholder="Question" ng-model="exchange.content">
+      </label>
+      <button class="button button-clear">
+        <!-- <i class="icon ion-ios7-paperplane"></i> -->
+        Ask
+      </button>
+    </form>
+  </ion-footer-bar>
+  
+</ion-view>
+
+
+

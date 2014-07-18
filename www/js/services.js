@@ -14,7 +14,7 @@ angular.module('starter.services')
           return;
         }
         var obj = {
-      		content: '<p>'+message.content+'</p>',
+      		content: message.content,
       		uid: sender.id,
           name: sender.name,
           email: sender.email,

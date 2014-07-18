@@ -4,7 +4,7 @@
     <ion-list>
     	<ion-item ng-repeat="exchange in exchanges | orderByPriority" type="item-text-wrap" href="#/tab/exchange/{{exchange.id}}">
     		<h2 ng-bind-html="exchange.content"></h2>
-        <span>By {{exchange.name}} (From {{exchange.team}})</span>
+        <p><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
     	</ion-item>
 	  </ion-list>
   </ion-content>

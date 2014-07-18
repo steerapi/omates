@@ -8,5 +8,12 @@
         <span class="badge badge-assertive" ng-show="(friend['unread-by-'+user.id] || 0)>0">{{friend['unread-by-'+user.id] || 0}}</span>
       </ion-item>
     </ion-list>
+
+
+      <div ng-if="isNoFriends()" style="text-align:center;">
+        <i class="icon ion-sad" style="font-size:170px;"></i>
+        <div style="font-size:20px;">Sorry, no Omaters are online right now...</div>
+      </div>  
+
   </ion-content>
 </ion-view>

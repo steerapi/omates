@@ -7,6 +7,20 @@ angular.module('starter.controllers')
     if(user===null){
       return;
     }
+    // $scope.user = user;
+    $scope.isNoFriends = function(){
+      var keys = Object.keys($scope.friends);
+      var count = 0;
+      for (var i = 0; i < keys.length; i++) {
+        var fid = keys[i];
+        if($scope.user.id!=fid && $scope.friends[fid].connections){
+          count++;
+        }
+      }
+      return count==0;
+    }
+
+
   }, function(error) {
      console.error('CurrentUser failed: ', error);
   });

@@ -9,7 +9,10 @@
 <div class="bar bar-subheader" style="padding:0px;">
   <div class="card" style="margin:0;padding-top:0px;">
       <div class="item item-text-wrap item-divider" >
-        <h2 ng-bind-html="exchange.content"></h2>
+        <h2 ng-bind-html="exchange.content" style="display:inline-block;"></h2>
+        <span class="item-note">
+          {{exchange.time | date : 'shortTime'}}
+        </span>
         <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
       </div>
     </div>
@@ -33,11 +36,23 @@
         <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
       </div>
     </div> -->
-    <div style="margin-top:64px">
+    <div>
+      <div class="card" style="margin:0;padding-top:0px;opacity:0;">
+      <div class="item item-text-wrap item-divider" >
+        <h2 ng-bind-html="exchange.content" style="display:inline-block;"></h2>
+        <span class="item-note">
+          {{exchange.time | date : 'shortTime'}}
+        </span>
+        <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
+      </div>
+      </div>
       <div ng-repeat="message in exchange_messages">
         <div class="list-card">
           <div class="item item-text-wrap">
-            <h2 ng-bind-html="message.content"></h2>
+            <h2 ng-bind-html="message.content" style="display:inline-block;"></h2>
+            <span class="item-note">
+              {{message.time | date : 'shortTime'}}
+            </span>
             <p style="text-align:right;"><i class="icon ion-person"></i> {{message.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{message.team}} &nbsp; <i class="icon ion-university"></i> {{message.school}}</p>
           </div>
         </div>

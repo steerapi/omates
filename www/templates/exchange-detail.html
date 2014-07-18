@@ -4,17 +4,28 @@
   The ExchangeCtrl pulls data from the Exchanges service (service.js)
   The Exchanges service returns an array of exchange data
 -->
-<ion-view title="{{exchange.content}}">
+
+<ion-view title="Exchange">
+<div class="bar bar-subheader" style="padding:0px;">
+  <div class="card" style="margin:0;padding-top:0px;">
+      <div class="item item-text-wrap item-divider" >
+        <h2 ng-bind-html="exchange.content"></h2>
+        <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
+      </div>
+    </div>
+</div>
+
   <ion-content has-header="true" padding="true">
     <!-- <h1>{{exchange.title}}</h1> -->
+   
 
-    <!-- <div class="bar bar-header bar-calm">
+    <!-- <div class="bar bar-subheader bar-calm">
       <h2 class="title" ng-bind-html="exchange.content"></h2>
       <div style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</div>
     </div> -->
-    <div class="bar bar-header bar-calm" style="border-top:none;">
+    <!-- <div class="bar bar-header bar-calm" style="border-top:none;">
       <div class="title"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</div>
-    </div>
+    </div> -->
 
     <!-- <div class="card">
       <div class="item item-text-wrap item-divider" style="/*background-color:#D6F5FF*/" >
@@ -22,7 +33,7 @@
         <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
       </div>
     </div> -->
-    <div style="margin-top:100px">
+    <div style="margin-top:64px">
       <div ng-repeat="message in exchange_messages">
         <div class="list-card">
           <div class="item item-text-wrap">

@@ -13,10 +13,11 @@
 
     </ion-item> -->
     <ol class="messages">
-      <li ng-repeat-start="message in messages" ng-class="{'messages-me':message.uid==user.id}" ng-bind-html="message.content">
+      <li ng-repeat-start="message in messages" ng-class="{'messages-me':message.uid==user.id}">
+        <p ng-bind-html="message.content"></p>
       </li>
       <li ng-repeat-end ng-class="{'messages-me':message.uid==user.id}" class="from">
-        {{message.name}}
+        {{message.time | date : 'short'}}
       </li>
       
 		</ol>

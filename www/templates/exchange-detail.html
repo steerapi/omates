@@ -6,54 +6,54 @@
 -->
 
 <ion-view title="Exchange">
-<div class="bar bar-subheader" style="padding:0px;">
-  <div class="card" style="margin:0;padding-top:0px;">
-      <div class="item item-text-wrap item-divider" >
-        <h2 ng-bind-html="exchange.content" style="display:inline-block;"></h2>
-        <span class="item-note">
-          {{exchange.time | date : 'shortTime'}}
-        </span>
-        <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
-      </div>
+<!-- <div class="bar bar-subheader no-padding">
+  <div class="card card-header">
+    <div ng-include="'templates/exchange-detail-header.html'">
     </div>
-</div>
+  </div>
+</div> -->
 
-  <ion-content has-header="true" padding="true">
+  <ion-content has-header="true">
     <!-- <h1>{{exchange.title}}</h1> -->
    
 
     <!-- <div class="bar bar-subheader bar-calm">
       <h2 class="title" ng-bind-html="exchange.content"></h2>
-      <div style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</div>
+      <div style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-trophy"></i> {{exchange.role}}</div>
     </div> -->
     <!-- <div class="bar bar-header bar-calm" style="border-top:none;">
-      <div class="title"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</div>
+      <div class="title"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-trophy"></i> {{exchange.role}}</div>
     </div> -->
 
     <!-- <div class="card">
       <div class="item item-text-wrap item-divider" style="/*background-color:#D6F5FF*/" >
         <h2 ng-bind-html="exchange.content"></h2>
-        <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
+        <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-trophy"></i> {{exchange.role}}</p>
       </div>
     </div> -->
     <div>
-      <div class="card" style="margin:0;padding-top:0px;opacity:0;">
-      <div class="item item-text-wrap item-divider" >
-        <h2 ng-bind-html="exchange.content" style="display:inline-block;"></h2>
-        <span class="item-note">
-          {{exchange.time | date : 'shortTime'}}
-        </span>
-        <p style="text-align:right;"><i class="icon ion-person"></i> {{exchange.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{exchange.team}} &nbsp; <i class="icon ion-university"></i> {{exchange.school}}</p>
-      </div>
+      <div class="">
+        <div ng-include="'templates/exchange-detail-header.html'">
+        </div>
       </div>
       <div ng-repeat="message in exchange_messages">
         <div class="list-card">
           <div class="item item-text-wrap">
             <h2 ng-bind-html="message.content" style="display:inline-block;"></h2>
-            <span class="item-note">
-              {{message.time | date : 'shortTime'}}
-            </span>
-            <p style="text-align:right;"><i class="icon ion-person"></i> {{message.name}} &nbsp; <i class="icon ion-person-stalker"></i> {{message.team}} &nbsp; <i class="icon ion-university"></i> {{message.school}}</p>
+            <p>
+              <span class="inline-block" ng-show="message.name">
+              <i class="icon ion-person"></i> {{message.name}}
+              </span>
+              <span class="inline-block" ng-show="message.team">
+              <i class="icon ion-person-stalker"></i> {{message.team}}
+              </span>
+              <span class="inline-block" ng-show="message.role">
+              <i class="icon ion-trophy"></i> {{message.role}}
+              </span>
+              <span class="inline-block" ng-show="message.time">
+              <i class="icon ion-ios7-clock"></i> {{message.time | date : 'short'}}
+              </span>              
+          </p>
           </div>
         </div>
       </div>

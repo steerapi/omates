@@ -12,7 +12,6 @@ angular.module('starter.controllers')
   });
   
   $scope.signIn = function(user) {
-    
     $scope.auth.$login('password', {
       email: user.email,
       password: user.password,
@@ -22,7 +21,7 @@ angular.module('starter.controllers')
     }, function(error) {
        console.error('Login failed: ', error);
     });
-    
+    user.password = "";
   };
   
 });

@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('ForgotPasswordCtrl', function($scope, $state) {
+.controller('ForgotPasswordCtrl', function($scope, $state, $firebaseSimpleLogin) {
 
   var ref = new Firebase("https://omates.firebaseio.com/");
   $scope.auth = $firebaseSimpleLogin(ref);

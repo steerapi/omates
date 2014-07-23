@@ -1,0 +1,17 @@
+<div class="item item-text-wrap item-divider" >
+  <h2 ng-bind-html="exchange.content" style="display:inline-block;"></h2>
+  <p>
+    <span class="inline-block" ng-show="exchange.name">
+    <i class="icon ion-person"></i> {{exchange.name}}
+    </span>
+    <span class="inline-block" ng-show="exchange.team">
+    <i class="icon ion-person-stalker"></i> {{exchange.team}}
+    </span>
+    <span class="inline-block" ng-show="exchange.role">
+    <i class="icon ion-trophy"></i> {{exchange.role}}
+    </span>
+    <span class="inline-block" ng-show="exchange.time">
+    <i class="icon ion-ios7-clock"></i> {{exchange.time | date : 'short'}}
+    </span>
+  </p>
+</div>

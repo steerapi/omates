@@ -17,7 +17,7 @@ angular.module('starter.controllers')
         name: user.name,
         email: user.email,
         team: user.team,
-        school: user.school
+        role: user.role
       });
             
       // since I can connect from multiple devices or browser tabs, we store each connection instance separately
@@ -41,6 +41,7 @@ angular.module('starter.controllers')
 
           // when I disconnect, update the last time I was seen online
           lastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
+          
         }
       });
     }, function(error) {
@@ -49,5 +50,9 @@ angular.module('starter.controllers')
   }
   checkLogin();
   
+  // $scope.isKeyboardVisible = function(){
+  //   console.log("isKeyboardVisible");
+  //   return window.Keyboard ? window.Keyboard.isVisible : false;
+  // }
   
 })

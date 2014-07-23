@@ -22,35 +22,50 @@ angular.module('starter.controllers')
       $scope.account_info.$save();
     }
   }
+  
+  $scope.signOut = function(user) {
+    
+    $scope.auth.$logout();
+    $state.go('signin');
+    
+  };
+  
+  var creditsRef = new Firebase("https://omates.firebaseio.com/credits");
+  $scope.credits = $firebase(creditsRef);
 
-  // $ionicModal.fromTemplateUrl('changeaccountinfo.html', function(modal) {
-  //     $scope.changeAccountModal = modal;
-  //   }, {
-  //     scope: $scope
-  //   });
-  //
-  // $scope.openChangeAccount = function() {
-  //   $scope.changeAccountModal.show();
-  // };
-  //
-  // $scope.closeChangeAccount = function() {
-  //   $scope.changeAccountModal.hide();
-  // };
-  //
-  // $scope.changeAccountInfo = function(newinfo) {
-  //   $scope.account_info.$update({
-  //     name:newinfo.name
-  //   });
-  //   $scope.account_info.$update({
-  //     team:newinfo.team
-  //   });
-  //   $scope.account_info.$update({
-  //     email:newinfo.email
-  //   });
-  //   $scope.account_info.$update({
-  //     school:newinfo.school
-  //   });
-  //
-  //   $scope.changeAccountModal.hide();
-  // };
+  var feedbacksRef = new Firebase("https://omates.firebaseio.com/feedbacks");
+  
+  $ionicModal.fromTemplateUrl('templates/credits.html', function(modal) {
+      $scope.creditsModal = modal;
+    }, {
+      scope: $scope
+    });
+
+  $scope.openCredits = function() {
+    $scope.creditsModal.show();
+  };
+
+  $scope.closeCredits = function() {
+    $scope.creditsModal.hide();
+  };
+
+  $ionicModal.fromTemplateUrl('templates/feedback.html', function(modal) {
+      $scope.feedbackModal = modal;
+    }, {
+      scope: $scope
+    });
+
+  $scope.openFeedback = function() {
+    $scope.feedbackModal.show();
+  };
+
+  $scope.closeFeedback = function() {
+    $scope.feedbackModal.hide();
+  };
+  
+  $scope.submitFeedback = function(feedback) {
+    feedbacksRef.push(feedback);
+    $scope.feedbackModal.hide();
+  };
+
 });

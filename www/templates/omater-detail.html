@@ -17,7 +17,7 @@
         <p ng-bind-html="message.content"></p>
       </li>
       <li ng-repeat-end ng-class="{'messages-me':message.uid==user.id}" class="from">
-        {{message.time | date : 'shortTime'}}
+        {{message.time | date : 'short'}}
       </li>
       
 		</ol>

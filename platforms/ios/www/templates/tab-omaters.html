@@ -1,12 +1,65 @@
 <ion-view title="Omaters">
+
+  <ion-nav-buttons side="right">
+    <label class="checkbox checkbox-default" ng-class="{'checkbox-nomark':!isInRegion()}" style="padding:3px">
+      <input type="checkbox" checked onclick="event.preventDefault()">
+    </label>
+  </ion-nav-buttons>
+
   <ion-content class="has-header">
     <!-- <h1>Omaters</h1> -->
-    <ion-list>
-      <ion-item ng-repeat="(fid,friend) in friends" type="item-text-wrap" href="#/tab/omaters/{{getThreadId(user.id,fid)}}" ng-if="user.id!=fid && friend.connections">
-        <h2>{{friend.name}}</h2>
-        <p><i class="icon ion-person-stalker"></i> {{friend.team || 'N/A'}} <i class="icon ion-university"></i> {{friend.school || 'N/A'}}</p>
+    <div class="list">
+        <a class="item" ng-repeat="(fid,friend) in friends | orderByPriority" href="#/tab/omaters/{{getThreadId(user.id,friend.id)}}" ng-if="user.id!=friend.id">
+          <div class="row">
+            <div class="col-center">
+            <label ng-class="{'checkbox-nomark':!friend.regions}" class="checkbox checkbox-default">
+              <input type="checkbox" ng-checked="friend.connections"  onclick="event.preventDefault()">
+            </label>          
+            </div>
+            <div class="col">
+              <h2>
+                {{friend.name}}
+              </h2>
+              <p style="margin:0;">
+                <span class="inline-block">
+                <i class="icon ion-person-stalker"></i> {{friend.team || 'N/A'}}
+                </span>
+                <span class="inline-block" ng-show="friend.role">
+                <i class="icon ion-trophy"></i> {{friend.role}}
+                </span>
+              </p>
+            </div>
+          </div>
+
+            <span class="badge badge-assertive" ng-show="(friend['unread-by-'+user.id] || 0)>0">{{friend['unread-by-'+user.id] || 0}}</span>
+        </a>
+    </div>
+    
+<!--    <ion-list>
+      <ion-item ng-repeat="(fid,friend) in friends | orderByPriority" type="item-text-wrap" href="#/tab/omaters/{{getThreadId(user.id,friend.id)}}" ng-if="user.id!=friend.id">
+      <div class="row">
+        <div class="col-center">
+        <label ng-class="{'checkbox-nomark':!friend.regions}" class="checkbox checkbox-default">
+          <input type="checkbox" ng-checked="friend.connections"  onclick="event.preventDefault()">
+        </label>
+        </div>
+        <div class="col">
+          <h2>
+            {{friend.name}}
+          </h2>
+          <p style="margin:0;">
+            <span class="inline-block">
+            <i class="icon ion-person-stalker"></i> {{friend.team || 'N/A'}}
+            </span>
+            <span class="inline-block">
+            <i class="icon ion-trophy"></i> {{friend.role || 'N/A'}}
+            </span>
+          </p>
+        </div>
+      </div>
+
         <span class="badge badge-assertive" ng-show="(friend['unread-by-'+user.id] || 0)>0">{{friend['unread-by-'+user.id] || 0}}</span>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
   </ion-content>
 </ion-view>

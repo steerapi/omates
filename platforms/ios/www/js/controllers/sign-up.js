@@ -13,7 +13,7 @@ angular.module('starter.controllers')
     obj[id] = {
       id: id,
       name: user.name, 
-      school: user.school, 
+      role: user.role, 
       email: user.email, 
       team: user.team
     };

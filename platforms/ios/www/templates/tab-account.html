@@ -29,12 +29,26 @@
       </div>
       
       <div class="item item-icon-left">
-        <i class="icon ion-university"></i>
-        <span ng-if="!editMode">{{account_info.school || 'N/A'}}</span>
-        <input ng-if="editMode" type="text" placeholder="School" ng-model="account_info.school" class="edit">
+        <i class="icon ion-trophy"></i>
+        <span ng-if="!editMode">{{account_info.role || 'N/A'}}</span>
+        <input ng-if="editMode" type="text" placeholder="Role" ng-model="account_info.role" class="edit">
+      </div>
+      
+    </div>
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="signOut()">
+        Sign-Out
+      </button>
+      <div class="padding-vertical">
+      <p>
+        <a ng-click="openFeedback()">Feedback</a>
+      </p>
+      <p>
+        <a ng-click="openCredits()">Credits</a>
+      </p>
       </div>
     </div>
-
+    
     <!-- <button class="button button-icon" ng-click="openChangeAccount()">
         <i class="icon ion-compose"></i> Change Account Info
     </button>
@@ -62,7 +76,7 @@
                 <input type="text" placeholder="Email" ng-model="account_info.email">
               </label>
               <label class="item item-input">
-                <input type="text" placeholder="School" ng-model="account_info.school">
+                <input type="text" placeholder="Role" ng-model="account_info.role">
               </label>
             </div>
             <div class="padding">

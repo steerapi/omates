@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"CDVKeyboard\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
                             "count": 1
                         },
@@ -19,6 +23,26 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LocationManager\"><param name=\"ios-package\" value=\"CDVLocationManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" onload=\"true\" value=\"CDVStatusBar\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarBackgroundColor\" value=\"#000000\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -26,6 +50,9 @@
         }
     },
     "installed_plugins": {
+        "com.ben2.cordova.keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.omates472645"
+        },
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.ionicframework.omates472645"
         },
@@ -33,6 +60,12 @@
             "PACKAGE_NAME": "com.ionicframework.omates472645"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.ionicframework.omates472645"
+        },
+        "org.apache.cordova.ibeacon": {
+            "PACKAGE_NAME": "com.ionicframework.omates472645"
+        },
+        "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "com.ionicframework.omates472645"
         }
     },

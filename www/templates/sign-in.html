@@ -1,5 +1,6 @@
 <ion-view title="Sign-In">
   <ion-content has-header="true">
+    <form ng-submit="signIn(user)">
     <div class="list">
       <label class="item item-input">
         <span class="input-label">Email</span>
@@ -11,18 +12,17 @@
       </label>
     </div>
     <div class="padding">
-      <button class="button button-block button-positive" ng-click="signIn(user)">
-        Sign-In
-      </button>
-      <p class="text-center">
+      <input type="submit" value="Sign-In" class="button button-block button-positive"/>
+      <p>
         <a href="#/sign-up">Sign Up</a>
       </p>
-      <p class="text-center">
+      <p>
         <a href="#/change-password">Change password</a>
       </p>
-      <p class="text-center">
+      <p>
         <a href="#/forgot-password">Forgot password</a>
       </p>
-    </div>
+    </div>      
+    </form>
   </ion-content>
 </ion-view>

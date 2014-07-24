@@ -39,7 +39,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-  
+    .state('communities', {
+      url: "/communities",
+      templateUrl: "templates/communities.html",
+      controller: 'CommunitiesCtrl'
+    })
     .state('signin', {
       url: "/sign-in",
       templateUrl: "templates/sign-in.html",

@@ -22,7 +22,85 @@
       <p>
         <a href="#/forgot-password">Forgot password</a>
       </p>
+      
     </div>      
     </form>
+
+     <p>
+      <button class="button button-light" ng-click="openIntro()">Introduction Popup</button>
+    </p>
+
+    <script id="intromodal.html" type="text/ng-template">
+      <ion-modal-view style="background:white;">
+        <!--
+        <ion-header-bar>
+          <h1 class="title">Welcome to Minglify</h1>
+        </ion-header-bar>
+        -->
+        <ion-content>
+          <div class="card">
+          <div class="item item-divider">
+              Communicate with Fellow Minglers
+            </div>
+            <div class="item item-text-wrap">
+              <div style="text-align:justify">
+                Minglify is the best way to connect with Minglers.
+                You'll instantly be able to:
+              </div>
+
+                <div class="list card" style="margin-bottom:5px;">
+
+                  <a href="#" class="item item-icon-left">
+                    <i class="icon ion-android-friends"></i>
+                    See everyone around
+                  </a>
+
+                  <a href="#" class="item item-icon-left">
+                    <i class="icon ion-chatbubbles"></i>
+                    Have private chats
+                  </a>
+
+                  <a href="#" class="item item-icon-left">
+                    <i class="icon ion-help"></i>
+                    Ask group questions
+                  </a>
+
+                </div>
+
+              <div style="text-align:center;margin-top:10px;">
+                Minglify + Space = Community
+              </div>
+
+                
+
+
+                
+              
+            </div>
+            <div class="item item-divider" style="text-align:center;">
+              Get started now!
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <button class="button button-energized" ng-click="closeIntro()" style="margin-right:20px;">Sign In</button>
+            <a ng-click="closeIntro()" href="#/sign-up" class="button button-calm" style="margin-left:20px;">Sign Up</a>
+          </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
+
+ <!-- <br />
+                <i class="ion-android-friends" style="font-size:40px;margin-right:20px;margin-top:10px;"></i>
+                <div style="display:inline-block;margin-top:-10px;">
+                  See everyone around you
+                </div>
+                <br />
+                <i class="ion-chatbubbles" style="font-size:40px;"></i>Have Private Chat
+                <br />
+                <i class="ion-help" style="font-size:40px;margin-right:20px;"></i>Ask Group Questions
+                <br />
+                Minglify is the best way to turn a space into a community -->
+
+
   </ion-content>
 </ion-view>

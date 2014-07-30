@@ -1,5 +1,7 @@
 angular.module('starter.controllers')
-.controller('OmatersCtrl', function($scope, $stateParams, $firebase, $firebaseSimpleLogin, $timeout, $omatesBeacon) {
+.controller('OmatersCtrl', function($scope, $state, $stateParams, $firebase, $firebaseSimpleLogin, $timeout, $omatesBeacon) {
+  var roomId = $stateParams.roomId;
+  var region = roomId;
   
   var ref = new Firebase("https://omates.firebaseio.com/");
   $scope.auth = $firebaseSimpleLogin(ref);
@@ -8,13 +10,24 @@ angular.module('starter.controllers')
       return;
     }
     var id = user.id;
-    var userRef = new Firebase("https://omates.firebaseio.com/users/"+id);
-    userRef.setPriority(-(new Date().getTime()));
+    var userRef = new Firebase("https://omates.firebaseio.com//users/"+id);
+    userRef.once('value', function(dataSnapshot) {
+      var user = dataSnapshot.val();
+      var userRoomRef = new Firebase("https://omates.firebaseio.com/"+region+"/users/"+id);
+      userRoomRef.update({
+        id: user.id || "",
+        "name": user.name|| "",
+        role: user.role || "",
+        email: user.email || "",
+        team: user.team || ""
+      });
+      userRoomRef.setPriority(-(new Date().getTime()));
+    });
   }, function(error) {
      console.error('CurrentUser failed: ', error);
   });
   
-  var usersRef = new Firebase("https://omates.firebaseio.com/users").limit(100); //30 days
+  var usersRef = new Firebase("https://omates.firebaseio.com/"+region+"/users").limit(100); //30 days
   // Automatically syncs everywhere in realtime
   $scope.friends = $firebase(usersRef);
   $scope.getThreadId = function(uid,fid){
@@ -23,8 +36,14 @@ angular.module('starter.controllers')
   }
   
   $scope.isInRegion = function(){
-    return $omatesBeacon.isInRegion("E2C56DB5-DFFB-48D2-B060-D0F5A71096E0");
+    return $omatesBeacon.isInRegion(region);
   }
+  
+  $scope.selectItem = function(user,friend){
+    
+    $state.go("tab.omaters-detail", {roomId: roomId, detailId: $scope.getThreadId(user.id,friend.id)});
+  }
+  
   // $scope.$on("ibeacon:didEnterRegion", function(e,data){
   //   cordova.plugins.locationManager.appendToDeviceLog('[DOM] ibeacon:didEnterRegion: '
   //       + JSON.stringify(data));

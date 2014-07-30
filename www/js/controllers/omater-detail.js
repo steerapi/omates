@@ -2,7 +2,9 @@ angular.module('starter.controllers')
 .controller('OmaterDetailCtrl', function($scope, $state, $stateParams, $firebase, $firebaseSimpleLogin, $omatesMessageAppender) {
   var id = $stateParams.detailId;
   var ids = id.split("-");
-  
+  var roomId = $stateParams.roomId;
+  var region = roomId;
+    
   var ref = new Firebase("https://omates.firebaseio.com/");
   $scope.auth = $firebaseSimpleLogin(ref);
   $scope.auth.$getCurrentUser().then(function(user){
@@ -11,12 +13,12 @@ angular.module('starter.controllers')
       return;
     }
     var uid = user.id;
-    var userRef = new Firebase("https://omates.firebaseio.com/users/"+uid);
+    var userRef = new Firebase("https://omates.firebaseio.com/"+region+"/users/"+uid);
     var fid = ids.filter(function(id){ return id!==uid})[0];
-    var friendRef = new Firebase("https://omates.firebaseio.com/users/"+fid);
+    var friendRef = new Firebase("https://omates.firebaseio.com/"+region+"/users/"+fid);
     $scope.user = $firebase(userRef);
     $scope.friend = $firebase(friendRef);
-    var msgRef = new Firebase("https://omates.firebaseio.com/messages/"+id);
+    var msgRef = new Firebase("https://omates.firebaseio.com/"+region+"/messages/"+id);
     
     var funread = friendRef.child("unread-by-"+uid);
     funread.remove();

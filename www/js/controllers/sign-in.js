@@ -5,7 +5,7 @@ angular.module('starter.controllers')
   $scope.auth = $firebaseSimpleLogin(ref);
   $scope.auth.$getCurrentUser().then(function(user){
     if(user!==null){
-      $state.go('tab.omaters');      
+      $state.go('communities');      
     }
   }, function(error) {
      console.error('Login failed: ', error);
@@ -17,7 +17,7 @@ angular.module('starter.controllers')
       password: user.password,
       rememberMe: true
     }).then(function(user) {
-       $state.go('tab.omaters');
+       $state.go('communities');   
     }, function(error) {
        console.error('Login failed: ', error);
     });

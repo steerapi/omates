@@ -34,47 +34,35 @@ angular.module('starter.services')
   }
 })
 .factory('$omatesBeacon', function($ionicPlatform, $firebase, $firebaseSimpleLogin){
-  
   var ref = new Firebase("https://omates.firebaseio.com/");
   var auth = $firebaseSimpleLogin(ref);
-  var myRegionsRef;
-  auth.$getCurrentUser().then(function(user){
-    if(user===null){
-      setTimeout(checkLogin,1000);
-      return;
-    }
-    var id = user.id;
-    myRegionsRef = new Firebase('https://omates.firebaseio.com/users/'+id+'/regions');
-  });
-  
+  var firebaseRefs = {};
   var beacons = {};
   
+  var createBeacon = function(_uuid) {
+      var uuid = _uuid.toUpperCase(); // mandatory
+      var identifier = 'iBeacon'; // mandatory
+      var major = 1; // optional, defaults to wildcard if left empty
+      var minor = undefined; // optional, defaults to wildcard if left empty
+
+      // throws an error if the parameters are not valid
+      var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
+
+      return beaconRegion;
+  }
+
   $ionicPlatform.ready(function() {
-    
     if(!window.cordova || !window.cordova.plugins.locationManager) {
       return;
     }
-  
-    /**
-     * Function that creates a BeaconRegion data transfer object.
-     * 
-     * @throws Error if the BeaconRegion parameters are not valid.
-     */
-    var createBeacon = function() {
-        var uuid = 'e2c56db5-dffb-48d2-b060-d0f5a71096e0'.toUpperCase(); // mandatory
-        var identifier = 'iBeacon'; // mandatory
-        var major = 1; // optional, defaults to wildcard if left empty
-        var minor = undefined; // optional, defaults to wildcard if left empty
-
-        // throws an error if the parameters are not valid
-        var beaconRegion = new cordova.plugins.locationManager.BeaconRegion(identifier, uuid, major, minor);
-
-        return beaconRegion;
-    }
+    
     var delegate = new cordova.plugins.locationManager.Delegate();
     delegate.didExitRegion = function (pluginResult) {
       var uuid = pluginResult.region.uuid.toUpperCase();
-      beacons[uuid].firebaseRef.remove();
+      if(firebaseRefs[uuid]){
+        firebaseRefs[uuid].remove();
+        delete firebaseRefs[uuid];
+      }
       delete beacons[uuid];
     };
     delegate.didEnterRegion = function (pluginResult) {
@@ -82,12 +70,13 @@ angular.module('starter.services')
       if(beacons[uuid]){
         return;
       }
-      var ref = myRegionsRef.push(uuid);
-      // when I disconnect, remove this region
-      ref.onDisconnect().remove();
+      if(firebaseRefs[uuid]){
+        var ref = firebaseRefs[uuid].push(uuid);
+        // when I disconnect, remove this region
+        ref.onDisconnect().remove();
+      }
       beacons[uuid] = {
-        region: pluginResult.region,
-        firebaseRef: ref
+        region: pluginResult.region
       };
     };
     delegate.didRangeBeaconsInRegion = function (pluginResult) {
@@ -121,6 +110,16 @@ angular.module('starter.services')
   
   return {
     isInRegion: function(uuid){
+      if(!firebaseRefs[uuid]){         
+        auth.$getCurrentUser().then(function(user){
+          if(user===null){
+            return;
+          }
+          var id = user.id;
+          var ref = new Firebase('https://omates.firebaseio.com/'+uuid+'/users/'+id+'/regions');
+          firebaseRefs[uuid] = ref;
+        });
+      }
       return beacons[uuid];
     }
   }

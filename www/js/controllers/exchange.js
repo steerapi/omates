@@ -1,6 +1,8 @@
 angular.module('starter.controllers')
 
 .controller('ExchangeCtrl', function($scope, $state, $stateParams, $firebase, $firebaseSimpleLogin, $omatesMessageAppender) {
+  var roomId = $stateParams.roomId;
+  var region = roomId;
   
   var ref = new Firebase("https://omates.firebaseio.com/");
   $scope.auth = $firebaseSimpleLogin(ref);
@@ -10,9 +12,9 @@ angular.module('starter.controllers')
       return;
     }
     var uid = user.id;
-    var userRef = new Firebase("https://omates.firebaseio.com/users/"+uid);
+    var userRef = new Firebase("https://omates.firebaseio.com/"+region+"/users/"+uid);
     $scope.user = $firebase(userRef);
-    var ref = new Firebase("https://omates.firebaseio.com/exchanges").limit(50);
+    var ref = new Firebase("https://omates.firebaseio.com/"+region+"/exchanges").limit(50);
     $scope.exchanges = $firebase(ref);
     $scope.newExchange = $omatesMessageAppender.register($scope.exchanges,$scope.user,function(obj,ref){
       var updateObj = {};

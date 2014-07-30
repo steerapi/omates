@@ -12,13 +12,13 @@ angular.module('starter.controllers')
       var id = user.id;
       var userRef = new Firebase("https://omates.firebaseio.com/users/"+id);
       $scope.user = $firebase(userRef);
-      $scope.user.$update({
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        team: user.team,
-        role: user.role
-      });
+      // $scope.user.$update({
+      //   id: user.id,
+      //   name: user.name,
+      //   email: user.email,
+      //   team: user.team,
+      //   role: user.role
+      // });
             
       // since I can connect from multiple devices or browser tabs, we store each connection instance separately
       // any time that connectionsRef's value is null (i.e. has no children) I am offline

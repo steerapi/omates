@@ -1,11 +1,11 @@
 <ion-view title="Minglevilles">
 
-  <ion-nav-buttons side="right">
+  <!-- <ion-nav-buttons side="right">
     <button class="button button-clear" ng-click="toggleEdit()">
       <span ng-show="!shouldShowReorder">Edit</span>
       <span ng-show="shouldShowReorder">Done</span>
     </button>
-  </ion-nav-buttons>
+  </ion-nav-buttons> -->
 
   <ion-content class="has-header">
     <!-- <h1>Omaters</h1> -->
@@ -13,7 +13,7 @@
               show-reorder="shouldShowReorder"
               can-swipe="listCanSwipe">
       <ion-item ng-repeat="item in items"
-                class="item-thumbnail-left">
+                class="item-thumbnail-left" ng-click="selectItem(item)">
         <img style="height:100%" ng-src="{{item.img}}">
         <h2>{{item.title}}</h2>
         <p>{{item.description}}</p>
@@ -21,14 +21,14 @@
                            ng-click="deleteItem(item)">
           Delete
         </ion-option-button>
-        <ion-reorder-button class="ion-navicon"
+        <!-- <ion-reorder-button class="ion-navicon"
                             on-reorder="reorderItem(item, $fromIndex, $toIndex)">
-        </ion-reorder-button>
+        </ion-reorder-button> -->
 
       </ion-item>
     </ion-list>
   </ion-content>
-  <ion-footer-bar align-title="left" class="bar-positive">
+  <!-- <ion-footer-bar align-title="left" class="bar-positive">
     <div class="buttons" ng-click="addPlace()">
       <button class="button button-clear">Add a Place</button>
     </div>
@@ -36,5 +36,5 @@
     <div class="buttons" ng-click="scanCode()">
       <button class="button  button-clear">Scan Code</button>
     </div>
-  </ion-footer-bar>
+  </ion-footer-bar> -->
 </ion-view>
